@@ -1,0 +1,57 @@
+<!-- jQuery -->
+    <script src="/helpers/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/helpers/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="/helpers/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="/helpers/vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="/helpers/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="/helpers/vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="/helpers/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="/helpers/vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="/helpers/vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="/helpers/vendors/Flot/jquery.flot.js"></script>
+    <script src="/helpers/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="/helpers/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="/helpers/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="/helpers/vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="/helpers/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="/helpers/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="/helpers/vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="/helpers/vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="/helpers/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="/helpers/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="/helpers/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="/helpers/vendors/moment/min/moment.min.js"></script>
+    <script src="/helpers/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="/helpers/build/js/custom.min.js"></script>
+    <script>
+      function initMap() {
+
+        var uluru = {lat: 6.9271, lng: 79.8612};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+    </script>
