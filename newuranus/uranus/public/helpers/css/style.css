@@ -1,0 +1,10 @@
+body {
+   background:-moz-linear-gradient(#666,#69C,#CCC,#963);
+  background:-webkit-linear-gradient(#CCC,#FFF,#CCC,#FFF);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}

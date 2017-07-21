@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include includes/head.ejs %>
+    <link href="helpers/css/Home.css" rel="stylesheet">
+  </head>
+  <body>
+  <div>
+    <header id="header">
+        <% include includes/topnav.ejs %>
+    </header>
+    <br>
+    <br>
+    <br>
+<div class="w3-content w3-section" style="max-width:100%" >
+
+  <img class="mySlides w3-animate-fading" src="helpers/img/Drone-Nature-Photography.jpg" style="width:100%;max-height:650px">
+  <img class="mySlides w3-animate-fading" src="helpers/img/tnc_92768748_preview_cropped-1260x708.jpg" style="width:100%;max-height:650px">
+  <img class="mySlides w3-animate-fading" src="helpers/img/australia-drone.jpg" style="width:100%;max-height:650px">
+  <img class="mySlides w3-animate-fading" src="helpers/img/drone1.jpg" style="width:100%;max-height:650px">
+</div>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 8000);
+}
+</script>
+
+    <br>
+    <br>
+    <br>
+
+
+
+
+    <div class="container ">
+    <div id="imageHeader" style=" background:-webkit-linear-gradient(#FFF,#cce6ff)">
+
+    <div class="row"> <!-- Begining of the first row -->
+
+    <div class="col-md-4" align="center">
+    <div id="image">
+       <a href="#">
+       <img src="/helpers/img/1200x630bb.jpg" width="150" height="150" style="-moz-border-radius:150px;-webkit-border-radius:150px">
+       </a>
+        <div id="desc">
+           <p style=" font-family:'Times New Roman', Times, serif;font-weight:bold">
+           <a href="#" style="color:#000">Select Drone</a></p>
+        </div>
+     </div>
+     </div>
+
+     <div class="col-md-4" align="center">
+     <div id="image">
+     <a href="#">
+      <img src="/helpers/img/20160128000089_0.jpg" width="150" height="150" style="-moz-border-radius:150px;-webkit-border-radius:150px">
+     </a>
+        <div id="desc">
+            <p style="font-family:'Times New Roman', Times, serif;font-weight:bold">
+             <a href="#" style="color:#000">Add Drone</a></p>
+            <br><br><br>
+        </div>
+     </div>
+     </div>
+
+     <div class="col-md-4" align="center">
+     <div id="image">
+     <a href="#">
+      <img src="/helpers/img/Drones.vu_.jpg" width="150" height="150" style="-moz-border-radius:150px;
+	            -webkit-border-radius:150px">
+     </a>
+        <div id="desc">
+           <p style="font-family:'Times New Roman', Times, serif;font-weight:bold">
+           <a href="#" style="color:#000">Add delivery</a></p>
+           <br><br><br>
+        </div>
+     </div>
+     </div>
+     </div> <!-- End of the first row -->
+
+
+
+     </div>
+     </div>
+     <br>
+     <br> <br><br><br>
+
+
+
+     <div class="container" id="footer" style="max-width:100%">
+      <p>CopyRight@2017 Drone Controllers.</p>
+     </div>
+  </div>
+
+  </body>
+</html>

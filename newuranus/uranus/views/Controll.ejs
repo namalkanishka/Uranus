@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+
+    <% include includes/head.ejs %>
+
+
+      <link rel="stylesheet" href="/helpers/css/styleNew.css">
+
+
+
+      <style>
+      #map
+	   {
+        width: 100%;
+        height: 400px;
+        background-color: grey;
+       }
+      </style>
+  </head>
+  <body>
+  <div>
+    <!--header-->
+    <header id="header">
+        <% include includes/topnav.ejs %>
+    </header>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+
+
+
+
+  <!--Drone logo-->
+  <div>
+  <img src="/helpers/img/tnc_92768748_preview_cropped-1260x708.jpg" style="width:100%;height:600px" >
+  </div>
+
+
+
+    <br>
+    <br>
+    <br>
+
+
+
+     <!-- Drone Readings-->
+  <div class="container ">
+    <div id="imageHeader" style="background:white">
+      &nbsp;&nbsp;&nbsp<br><br><br>
+      <p style="color:#000;margin-top:-40px;text-align:center;font-family:'Comic Sans MS',
+      cursive;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp; Drone readings </p>
+      <p style="margin-top:20px">&nbsp;&nbsp;&nbsp;&nbsp Maximum Tilt</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp15</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbspVertical speed</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp0.8m/s</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbspRotational speed</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp0.7m/s</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbspmaximum Attitude</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp2m</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbspSignal</p>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp64%</p>
+    </div>
+
+    <!-- Monitor flodded area-->
+    <div id="AddVideos" style="background:white; margin-left:30px;padding-left:10px">
+        <p style="color:#000;margin-top:20px;text-align:center;font-family:'Comic Sans MS',
+           cursive;font-weight:bold"> Monitor flooded area </p>
+        <img src="/helpers/img/video-play-3-512.png" style="margin-top:8px;margin-left:120px" width="100" height="100">
+    </div>
+
+
+      <!-- Add location-->
+      <div id="textinputs" style="background:white">
+        <br><br><br>
+        <form action="" method="get">
+          <p style="color:#000;margin-top:-40px;text-align:center;font-family:'Comic Sans MS',
+           cursive;font-weight:bold">&nbsp;&nbsp;&nbsp;&nbsp; Add Location </p>
+
+          <label style="color:#000;font-family:'Times New Roman', Times, serif;margin-top:20px">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp Latitude </label>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+          <input style="color:#000;font-family:'Times New Roman', Times, serif" name="lati" type="text"><br><br>
+
+          <label style="color:#000;font-family:'Times New Roman', Times, serif">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp Longitude </label>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+          <input style="color:#000;font-family:'Times New Roman', Times, serif" name="long" type="text"><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp
+
+          <input style=" -moz-border-radius:5px;-webkit-border-radius:5px;width:197px;margin-left:91px;background-color:#99F"
+          name="btnSave" type="button" value="Save">
+        </form>
+      </div>
+
+
+
+
+      <!-- Map-->
+     <div id="selectmap" style="background:white;color:#000">
+       <div id="map">
+       </div>
+    </div>
+
+ </div>
+
+
+     <br> <br><br><br><br>
+
+
+     <!--footer-->
+     <div class="container" id="footer" style="max-width:100%">
+        <p>CopyRight@2017 Drone Controllers.</p>
+     </div>
+
+     <script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+      var map, infoWindow;
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelIndex = 0;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 10
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+            var marker = new google.maps.Marker({
+              position: pos,
+              map: map
+            });
+
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent(pos);
+            infoWindow.open(map);
+            map.setCenter(pos);
+
+
+
+
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+        google.maps.event.addListener(map, 'click', function(event) {
+            addMarker(event.latLng, map);
+        });
+        function addMarker(location, map) {
+        // Add the marker at the clicked location, and add the next-available label
+        // from the array of alphabetical characters.
+        var marker = new google.maps.Marker({
+          position: location,
+          label: labels[labelIndex++ % labels.length],
+          map: map
+        });
+      }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJEucanY7W1mwpLBORu1Uppe6ZVUo3qSY&callback=initMap">
+    </script>
+
+
+  </div>
+  </body>
+</html>
