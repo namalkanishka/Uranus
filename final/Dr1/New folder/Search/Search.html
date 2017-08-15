@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta charset="UTF-8">
+    <title>
+      Responsive Header Demo
+    </title>
+     <link rel="stylesheet" href="Search.css">
+
+    
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    
+  <div>
+    <header id="header">
+      <div class="container">
+      <div id="logo"> <img src="Sky-Viper-M200-Nano-Drone-300x244.png" width="60" height="60"></div>
+        <h1>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Drone controllers
+        </h1>
+        <nav id="nav">
+          <ul>
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">Add Drone</a>
+            </li>
+            <li>
+              <a href="#">Add delivery</a>
+            </li>
+            <li>
+              <a href="#">Select Drone</a>
+            </li>
+            <li>
+              <a href="#">Login</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      </div>
+    </header>
+   
+       
+    </div>
+    
+    <div >
+       <form id='test' name='test' >
+        <label style="margin-left:420px; font-size:18px;  font-family:'Times New Roman', Times, serif">Search :</label>
+        <!-- <p id="a"></p> -->
+        <input list="recieverlist" name="name" style="color:#000; margin-top:210px;margin-left:60px;height:30px">
+            <datalist id="recieverlist" name="name" class="main-form">
+              <option value="">None Selected</option>
+           </datalist>
+        <input  type="button" onclick="search()" name="btnSerch" value="Search" style="margin-left:50px; background:#009;color:#FFF;
+        font-family:'Times New Roman', Times, serif;font-size:18px;-webkit-border-radius:5px;">
+       </form>
+       </section>
+    
+   
+    
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+      <br><br>
+      <div class="container" id="footer" style="max-width:100%;margin-top:265px">
+      <p>CopyRight@2017 Drone Controllers.</p>
+     </div>
+  </div> 
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    function api() {
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/acc",
+            data: $('#test').serialize(),
+            success: function (data) {
+
+                // console.log(data);
+                if (data)
+                    var a = data;
+                $.each(a, function (bb) {
+                    console.log(bb);
+                    console.log("hh");
+                    console.log(a[bb]);
+                    console.log(a[bb].username);
+                });
+                var options = '';
+
+                for (var i = 0; i < data.length; i++) { // Loop through the data & construct the options
+                    options += '<option value="' + data[i].username + '">' + data[i].username + '</option>';
+                }
+
+                // Append to the html
+                $('#recieverlist').append(options);
+
+                $("#a").html(data.username);
+
+
+            },
+            error: function () {
+                alert("something went wrong");
+            }
+        });
+
+    }
+window.onload = function() {
+  api3();;
+};
+
+
+function api3() {
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/drones",
+            data: $('#test').serialize(),
+            success: function (data2) {
+                // console.log(data);
+                if (data2)
+                    var a = data2;
+                    console.log(a);
+                    $.each(a, function (bb) {
+                    console.log(bb);
+                    console.log("hh");
+                    console.log(a[bb]);
+                     console.log(a[bb].name);
+                });
+
+                var options = '';
+
+                for (var i = 0; i < data2.length; i++) { // Loop through the data & construct the options
+                    options += '<option value="' + data2[i].name + '">' + data2[i].name + '</option>';
+                }
+
+                // Append to the html
+                $('#recieverlist').append(options);
+
+            },
+            error: function () {
+                alert("something went wrong");
+            }
+        });
+
+    }
+  function search() {
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/search_drones",
+            data: $('#test').serialize(),
+            success: function (data2) {
+                 console.log('serachdata');
+                 var name="hbvjkb";
+                if (data2)
+                    var c = data2;
+                    // console.log(a);
+                    
+                    $.each(c, function (bb) {
+                    console.log(bb);
+                    console.log("hh");
+                    console.log(c[bb]);
+                     console.log(c[bb].name);
+                     name=(c[bb].name);
+
+                });
+                      // location.href = "./b.php";
+                      
+                      window.location.replace("http://localhost/Dr1/Controll.php?name="+name);
+
+               
+            },
+            error: function () {
+                alert("something went wrong");
+            }
+        });
+
+    }
+
+</script>
+</html>

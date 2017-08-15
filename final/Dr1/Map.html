@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>
+    Responsive Header Demo
+  </title>
+  <link rel="stylesheet" href="Home.css">
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    #map
+    {
+      width: 100%;
+      height: 500px;
+      background-color: grey;
+    }
+  </style> 
+</head>
+<body>
+  <div>
+    <header id="header">
+      <div class="container">
+        <div id="logo"> <img src="Sky-Viper-M200-Nano-Drone-300x244.png" width="60" height="60"></div>
+        <h1>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Drone controllers
+        </h1>
+        <nav id="nav">
+          <ul>
+            <li>
+              <a href="#">Home</a>
+            </li>
+            <li>
+              <a href="#">Add Drone</a>
+            </li>
+            <li>
+              <a href="#">Add delivery</a>
+            </li>
+            <li>
+              <a href="#">Select Drone</a>
+            </li>
+            <li>
+              <a href="#">Login</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="map">
+    </div>
+    <div>
+      <p id="i"></p>
+      <p id="ie"></p>
+    </div>
+    <script>
+      function initMap() {
+        var lat = [];
+        var lon=[];    
+        var uluru = {lat: 6.900336, lng: 79.926441};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+         google.maps.event.addListener(map, 'click', function(event) {
+          alert("Latitude: " + event.latLng.lat() + " " + ", longitude: " + event.latLng.lng());
+        var a= event.latLng.lat();
+        var b=event.latLng.lng();
+        var c='<br>';
+        lat.push(a);
+        lat.push(c);
+        lon.push(b);
+        lon.push(c);
+        document.getElementById("i").innerHTML = a;
+        document.getElementById("ie").innerHTML = lat;
+        
+  });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+  </script>
+
+
+  <br><br>
+  <div class="container" id="footer" style="max-width:100%">
+    <p>CopyRight@2017 Drone Controllers.</p>
+  </div>
+</div> 
+
+</body>
+</html>
+
+
