@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "drone.data.unityweb",
+"asmCodeUrl": "drone.asm.code.unityweb",
+"asmMemoryUrl": "drone.asm.memory.unityweb",
+"asmFrameworkUrl": "drone.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#222C36"
+}
